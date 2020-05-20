@@ -11,7 +11,7 @@ const DefaultImg = styled(FriendIcon)`
   margin-right: 10px;
 `;
 
-const StyledFriend = styled(Flex)(
+const StyledListItem = styled(Flex)(
   ({ theme }) => css`
     width: 100%;
     padding: 10px;
@@ -23,11 +23,11 @@ const StyledFriend = styled(Flex)(
   `,
 );
 
-const FriendsListItem = () => (
-  <StyledFriend>
-    <DefaultImg />
-    <h4>First Last Name</h4>
-  </StyledFriend>
+const ListItem = ({children}) => (
+    <StyledListItem>
+        <DefaultImg />
+        {children}
+    </StyledListItem>
 );
 
-export default FriendsListItem;
+export default ListItem;

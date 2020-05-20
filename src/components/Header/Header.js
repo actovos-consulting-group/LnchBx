@@ -38,10 +38,10 @@ const StyledDiv = styled(Flex)`
   align-content: center;
 `;
 
-const Header = () => (
+const Header = ({toggle}) => (
   <StyledNav>
     <Logo />
-    <Button disabled>New LunchTrip</Button>
+    <Button onClick={toggle}>New LunchTrip</Button>
     <StyledDiv>
       <DefaultImg />
       <h3>Daniel</h3>
