@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../../components/Header/Header';
-import { Grid } from '@actovos-consulting-group/ui-core';
+import { Grid, Block } from '@actovos-consulting-group/ui-core';
 import FriendsList from '../../components/Dashboard/FriendsList/FriendsList';
 import Footer from '../../components/Footer/Footer';
 import PastTripItems from '../../components/Dashboard/PastTrips/PastTripItems';
-import { Block } from '@actovos-consulting-group/ui-core';
 
 class Layout extends Component {
   render() {
