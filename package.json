@@ -3,18 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@actovos-consulting-group/ui-core": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext '.js' .",
+    "prettier": "prettier --check '**/*.{js,jsx,ts,tsx,md}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +35,28 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@actovos-consulting-group/eslint-config-acg": "^1.0.0",
+    "@actovos-consulting-group/prettier-config": "^1.0.2",
+    "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md,php}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
