@@ -1,0 +1,4 @@
+/**/node_modules
+/server/git
+server/.vagrant
+public
