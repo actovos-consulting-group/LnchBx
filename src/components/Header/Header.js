@@ -1,13 +1,13 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
 import styled, { css } from 'styled-components';
-import { Button } from '@actovos-consulting-group/ui-core';
+import { Button, Flex } from '@actovos-consulting-group/ui-core';
 import { FaUser } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
 
 const DefaultImg = styled(FaUser)(
   () => css`
     border-radius: 50%;
-    border: 1px solid;
+    border: 1px solid ${p => p.theme.colors.white};
     width: 50px;
     height: 50px;
     margin-right: 10px;
@@ -32,7 +32,7 @@ const StyledNav = styled.nav(
   `,
 );
 
-const StyledDiv = styled.div`
+const StyledDiv = styled(Flex)`
   display: flex;
   justify-content: space-between;
   align-content: center;

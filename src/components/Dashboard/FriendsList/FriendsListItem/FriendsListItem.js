@@ -5,7 +5,7 @@ import { FaUserFriends as FriendIcon } from '@actovos-consulting-group/ui-core/e
 
 const DefaultImg = styled(FriendIcon)`
   border-radius: 50%;
-  border: 1px solid;
+  border: 1px solid ${p => p.theme.colors.black};
   width: 50px;
   height: 50px;
   margin-right: 10px;

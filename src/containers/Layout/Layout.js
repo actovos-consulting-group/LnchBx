@@ -10,7 +10,7 @@ class Layout extends Component {
   render() {
     return (
       <Fragment>
-        <Header borderBottom={`3px solid ${p => p.theme.colors.purple}`} />
+        <Header />
         <Block marginTop="20px">
           <Grid.Row>
             <Grid.Column size={3}>
