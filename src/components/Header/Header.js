@@ -14,20 +14,23 @@ const DefaultImg = styled(FaUser)(
   `,
 );
 
-const StyledNav = styled.nav`
-  background-color: ${p => p.theme.colors.black};
-  color: ${p => p.theme.colors.white};
-  padding: 10px;
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  box-sizing: border-box;
-`;
+const StyledNav = styled.nav(
+  ({ theme }) => css`
+    background-color: ${theme.colors.black};
+    color: ${theme.colors.white};
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-sizing: border-box;
+    border-bottom: 3px solid ${theme.colors.pink};
+  `,
+);
 
 const StyledDiv = styled.div`
   display: flex;
