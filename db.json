@@ -1,63 +1,97 @@
 {
-    "friends": [
-        {
-            "id": 1,
-            "name": "lionel Messi",
-            "image": "https://dj0j0ofql4htg.cloudfront.net/cms2/image_manager/uploads/News/279515/7/default.jpg",
-            "occupation": "Futbolista",
-            "location": "Barcelona"
-        },
-        {
-            "id": 3,
-            "name": "Jose Altuve",
-            "image": "http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/31662.png&w=350&h=254",
-            "occupation": "basball player",
-            "location": "Houston"
-        },
-        {
-            "id": 4,
-            "name": "Aaron Judge",
-            "image": "https://espnfivethirtyeight.files.wordpress.com/2017/07/judge1.jpg?w=575&quality=90&strip=info",
-            "occupation": "baseball player",
-            "location": "New York"
-        },
-        {
-            "id": 5,
-            "name": "Kristap Porzingis",
-            "image": "https://thenypost.files.wordpress.com/2017/01/kristaps_porzingis1.jpg?quality=90&strip=all",
-            "occupation": "basketball player",
-            "location": "New York"
-        },
-        {
-            "id": 6,
-            "name": "Dirk Nowitzki",
-            "image": "http://www1.pictures.zimbio.com/gi/Dirk+Nowitzki+Kristaps+Porzingis+TNc9dPkCSWEm.jpg",
-            "occupation": "basketball players",
-            "location": "New York"
-        }
-    ],
-    "categories":[
-        {
-            "id":1,
-            "name":"Mexican"
-        }, {
-            "id":2,
-            "name":"Seafood"
-        }, {
-            "id":3,
-            "name":"Chinese"
-        }, {
-            "id":4,
-            "name":"Thai"
-        }, {
-            "id":5,
-            "name": "Sushi"
-        }, {
-            "id":6,
-            "name": "Korean BBQ"
-        }
-    ],
-    "restaurants": [
-        
-    ]
+  "friends": [
+    {
+      "id": 1,
+      "name": "lionel Messi",
+      "image": "https://dj0j0ofql4htg.cloudfront.net/cms2/image_manager/uploads/News/279515/7/default.jpg",
+      "occupation": "Futbolista",
+      "location": "Barcelona"
+    },
+    {
+      "id": 3,
+      "name": "Jose Altuve",
+      "image": "http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/31662.png&w=350&h=254",
+      "occupation": "basball player",
+      "location": "Houston"
+    },
+    {
+      "id": 4,
+      "name": "Aaron Judge",
+      "image": "https://espnfivethirtyeight.files.wordpress.com/2017/07/judge1.jpg?w=575&quality=90&strip=info",
+      "occupation": "baseball player",
+      "location": "New York"
+    },
+    {
+      "id": 5,
+      "name": "Kristap Porzingis",
+      "image": "https://thenypost.files.wordpress.com/2017/01/kristaps_porzingis1.jpg?quality=90&strip=all",
+      "occupation": "basketball player",
+      "location": "New York"
+    },
+    {
+      "id": 6,
+      "name": "Dirk Nowitzki",
+      "image": "http://www1.pictures.zimbio.com/gi/Dirk+Nowitzki+Kristaps+Porzingis+TNc9dPkCSWEm.jpg",
+      "occupation": "basketball players",
+      "location": "New York"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Mexican"
+    },
+    {
+      "id": 2,
+      "name": "Seafood"
+    },
+    {
+      "id": 3,
+      "name": "Chinese"
+    },
+    {
+      "id": 4,
+      "name": "Thai"
+    },
+    {
+      "id": 5,
+      "name": "Sushi"
+    },
+    {
+      "id": 6,
+      "name": "Korean BBQ"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Weissnat Group",
+      "address": "587 Jean Point"
+    },
+    {
+      "id": 2,
+      "name": "Considine - Mosciski",
+      "address": "496 Schuster Divide"
+    },
+    {
+      "id": 3,
+      "name": "Stanton Inc",
+      "address": "56362 Antonia Mountains"
+    },
+    {
+      "id": 4,
+      "name": "Lynch, Stanton and Tremblay",
+      "address": "540 O'Conner Wells"
+    },
+    {
+      "id": 5,
+      "name": "Kuhn, Kuhic and Bauch",
+      "address": "934 Ethyl Loaf"
+    },
+    {
+      "id": 6,
+      "name": "Daugherty Group",
+      "address": "70791 Kariane Fort"
+    }
+  ]
 }

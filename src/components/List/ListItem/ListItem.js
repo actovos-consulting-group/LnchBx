@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Flex } from '@actovos-consulting-group/ui-core';
 import { FaUserFriends as FriendIcon } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
 
-const DefaultImg = styled(FriendIcon)`
+const DefaultImg = styled.img`
   border-radius: 50%;
   border: 1px solid ${p => p.theme.colors.cardBorderBottom};
   width: 50px;
@@ -23,11 +23,13 @@ const StyledListItem = styled(Flex)(
   `,
 );
 
-const ListItem = ({children}) => (
-    <StyledListItem>
-        <DefaultImg />
-        {children}
+const ListItem = ({ id, name, image }) => {
+  return (
+    <StyledListItem key={id}>
+      <DefaultImg src={image} />
+      <p>{name}</p>
     </StyledListItem>
-);
+  );
+};
 
 export default ListItem;

@@ -1,9 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Flex } from '@actovos-consulting-group/ui-core';
-import { FaUserFriends as FriendIcon } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
+import { Flex, Button } from '@actovos-consulting-group/ui-core';
+import {
+  FaMinusCircle,
+  FaPlusCircle,
+} from '@actovos-consulting-group/ui-core/esm/Icons/fa';
+import Icon from '@actovos-consulting-group/ui-core/dist/Components/Icon';
 
-const DefaultImg = styled(FriendIcon)`
+const DefaultImg = styled.img`
   border-radius: 50%;
   border: 1px solid ${p => p.theme.colors.cardBorderBottom};
   width: 50px;
@@ -16,6 +20,8 @@ const StyledFriend = styled(Flex)(
     width: 100%;
     padding: 10px;
     border-bottom: 1px solid ${theme.colors.cardBorderBottom};
+    justify-content: space-between;
+    align-items: center
 
     :hover {
       background-color: ${theme.colors.hover};
@@ -23,11 +29,37 @@ const StyledFriend = styled(Flex)(
   `,
 );
 
-const FriendsListItem = () => (
-  <StyledFriend>
-    <DefaultImg />
-    <h4>First Last Name</h4>
-  </StyledFriend>
+const StyledPlusIcon = styled(FaPlusCircle)(
+  ({ theme }) => css`
+    color: ${theme.colors.teal};
+    position: relative;
+    top: 1em;
+    right: 1em;
+  `,
 );
+
+const StyledMinusIcon = styled(FaMinusCircle)(
+  ({ theme }) => css`
+    color: ${theme.colors.yellow};
+    position: relative;
+    top: 1em;
+    right: 1em;
+  `,
+);
+
+const FriendsListItem = ({ id, name, image, type = null }) => {
+  // console.log('[friendlistitem.sj', type);
+  let iconDisplay;
+  if (type === 'newTrip') {
+    iconDisplay = <StyledPlusIcon />;
+  }
+  return (
+    <StyledFriend key={id}>
+      <DefaultImg src={image} />
+      <p>{name}</p>
+      {iconDisplay}
+    </StyledFriend>
+  );
+};
 
 export default FriendsListItem;
