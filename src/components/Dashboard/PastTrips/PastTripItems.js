@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import MyTheme from '../../../theme';
 import PastTripItem from './PastTripItem/PastTripItem';
 
 const PastTripContainer = styled.div`
-  border: 1px solid ${MyTheme.colors.black};
+  border: 1px solid ${p => p.theme.colors.black};
   width: 100%;
 `;
 

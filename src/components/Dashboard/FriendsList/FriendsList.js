@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import FriendsListItem from './FriendsListItem/FriendsListItem';
-import MyTheme from '../../../theme';
 
 const FriendListContainer = styled.div`
-  border: 1px solid ${MyTheme.colors.black};
+  border: 1px solid ${p => p.theme.colors.black};
   width: 100%;
 `;
 
 const FriendListHeader = styled.div`
   text-align: center;
-  border-bottom: 1px solid ${MyTheme.colors.black};
+  border-bottom: 1px solid ${p => p.theme.colors.black};
 `;
 
 const FriendsList = () => (
