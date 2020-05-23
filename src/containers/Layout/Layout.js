@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import { Grid, Block, Modal } from '@actovos-consulting-group/ui-core';
 import FriendsList from '../../components/Dashboard/FriendsList/FriendsList';
@@ -12,11 +12,10 @@ class Layout extends Component {
   state = {
     showModal: false,
     friends: [],
-    tripFriends: [],
   };
 
   getFriends = () => {
-    axios.get('http://localhost:3009/friends').then(({ data }) => {
+    axios.get('http://localhost:3004/friends').then(({ data }) => {
       this.setState({ friends: data });
     });
   };
@@ -33,8 +32,14 @@ class Layout extends Component {
 
   render() {
     return (
-      <Fragment>
-        <TripModal friends={this.state.friends} show={this.state.showModal} />
+      <>
+        {this.state.showModal && (
+          <TripModal
+            friends={this.state.friends}
+            show={this.state.showModal}
+            toggleModal={this.toggleModalHandler}
+          />
+        )}
         <Header toggle={this.toggleModalHandler} />
         <Block marginTop="20px">
           <Grid.Row>
@@ -51,7 +56,7 @@ class Layout extends Component {
         </Block>
 
         <Footer />
-      </Fragment>
+      </>
     );
   }
 }
