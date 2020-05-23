@@ -14,7 +14,6 @@ const ListHeader = styled.div`
 
 const List = ({ items = [], header }) => {
   const listItems = items.map(item => {
-    console.log(item);
     return <ListItem {...item} />;
   });
 
