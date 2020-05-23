@@ -47,14 +47,17 @@ const StyledMinusIcon = styled(FaMinusCircle)(
   `,
 );
 
-const FriendsListItem = ({ id, name, image, type = null }) => {
-  // console.log('[friendlistitem.sj', type);
+const FriendsListItem = ({ id, name, image, type = null, toggle = null }) => {
   let iconDisplay;
   if (type === 'newTrip') {
-    iconDisplay = <StyledPlusIcon />;
+    iconDisplay = <StyledPlusIcon onClick={() => toggle(id)} />;
   }
+  if (type === 'tripFriends') {
+    iconDisplay = <StyledMinusIcon onClick={() => toggle(id)} />;
+  }
+
   return (
-    <StyledFriend key={id}>
+    <StyledFriend key={id} data-id={id}>
       <DefaultImg src={image} />
       <p>{name}</p>
       {iconDisplay}
