@@ -18,8 +18,6 @@ const RestaurantCards = () => {
       });
   }, []);
 
-  console.log(allRestaurants);
-
   return (
     <Grid.Row>
       {allRestaurants && allRestaurants.map(r => <RestaurantCard info={r} />)}

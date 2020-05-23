@@ -52,8 +52,6 @@ const TripModal = ({ show, friends, toggleModal }) => {
       friends: [...tripFriends],
     };
 
-    console.log(data);
-
     const trips = StorageHelper.get('trips');
 
     if (trips) {
