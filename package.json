@@ -2,8 +2,21 @@
   "name": "lnchbx-global",
   "private": true,
   "version": "0.0.0",
-  "description": "",
+  "description": "ACG lnchbx helper",
   "main": "index.js",
+  "dependencies": {
+    "@actovos-consulting-group/ui-core": "^1.4.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "json-server": "^0.16.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.0"
+  },
   "scripts": {
     "bootstrap": "dotenvi -o ./server -s",
     "eslint": "eslint client/src",
@@ -34,6 +47,5 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "dependencies": {}
+  }
 }
