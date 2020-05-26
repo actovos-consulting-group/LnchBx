@@ -20,7 +20,9 @@ const RestaurantCards = () => {
 
   return (
     <Grid.Row>
-      {allRestaurants && allRestaurants.map(r => <RestaurantCard info={r} />)}
+      {allRestaurants?.map(r => (
+        <RestaurantCard info={r} />
+      ))}
     </Grid.Row>
   );
 };
