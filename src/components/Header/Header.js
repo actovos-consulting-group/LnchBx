@@ -1,8 +1,8 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
 import styled, { css } from 'styled-components';
 import { Button, Flex } from '@actovos-consulting-group/ui-core';
 import { FaUser } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
+import Logo from '../Logo/Logo';
 
 const DefaultImg = styled(FaUser)(
   () => css`
@@ -38,10 +38,10 @@ const StyledDiv = styled(Flex)`
   align-content: center;
 `;
 
-const Header = () => (
+const Header = ({ toggle }) => (
   <StyledNav>
     <Logo />
-    <Button disabled>New LunchTrip</Button>
+    <Button onClick={toggle}>New LunchTrip</Button>
     <StyledDiv>
       <DefaultImg />
       <h3>Daniel</h3>

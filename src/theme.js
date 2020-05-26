@@ -16,13 +16,9 @@ const COLORS = {
   cardTitleBorderBottom: '#ECECEC',
   cardBorderBottom: '#CCCCCC',
   white: '#FFFFFF',
+  hover: '#EAEAEA'
 };
 
-const VARIANTS = {
-  success: COLORS.green,
-  danger: COLORS.danger,
-  warning: COLORS.yellow,
-};
 
 export default {
   colors: COLORS,

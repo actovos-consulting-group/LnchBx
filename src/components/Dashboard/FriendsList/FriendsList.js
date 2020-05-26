@@ -12,19 +12,21 @@ const FriendListHeader = styled.div`
   border-bottom: 1px solid ${p => p.theme.colors.black};
 `;
 
-const FriendsList = () => (
-  <FriendListContainer>
-    <FriendListHeader>
-      <h3>Friends</h3>
-    </FriendListHeader>
-    <FriendsListItem />
-    <FriendsListItem />
-    <FriendsListItem />
-    <FriendsListItem />
-    <FriendsListItem />
-    <FriendsListItem />
-    <FriendsListItem />
-  </FriendListContainer>
-);
+//TODO: make the getFriends call here instead of Layout
+
+const FriendsList = ({ items = [], header, type, toggle = () => null }) => {
+  const listItems = items.map(item => {
+    return <FriendsListItem {...item} type={type} toggle={toggle} />;
+  });
+
+  return (
+    <FriendListContainer>
+      <FriendListHeader>
+        <h3>{header}</h3>
+      </FriendListHeader>
+      {listItems}
+    </FriendListContainer>
+  );
+};
 
 export default FriendsList;
