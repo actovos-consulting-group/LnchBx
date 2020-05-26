@@ -10,18 +10,13 @@ import {
   Button,
   Input,
 } from '@actovos-consulting-group/ui-core';
-import FriendsList from '../Dashboard/FriendsList/FriendsList';
 import StorageHelper from '../../helpers/Storage';
+import FriendsList from '../Dashboard/FriendsList/FriendsList';
 
 const TripModal = ({ show, friends, toggleModal }) => {
-  // clean this up. its mounting on page load and should only mount when called
   const [tripFriends, setTripFriends] = useState([]);
   const [friendOptions, setFriendOptions] = useState(friends);
   const [inputValue, setInputValue] = useState('');
-
-  const closeModal = () => {
-    // set modal to false
-  };
 
   const addFriendToggle = id => {
     const friend = friendOptions.filter(f => {
@@ -49,7 +44,7 @@ const TripModal = ({ show, friends, toggleModal }) => {
     const tripName = inputValue;
     const data = {
       name: tripName,
-      friends: [...tripFriends],
+      friends: tripFriends,
     };
 
     const trips = StorageHelper.get('trips');

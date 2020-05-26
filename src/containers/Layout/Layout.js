@@ -1,64 +1,62 @@
-import React, { Component } from 'react';
-import Header from '../../components/Header/Header';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Grid, Block, Modal } from '@actovos-consulting-group/ui-core';
+import Header from '../../components/Header/Header';
 import FriendsList from '../../components/Dashboard/FriendsList/FriendsList';
 import Footer from '../../components/Footer/Footer';
 import PastTripItems from '../../components/Dashboard/PastTrips/PastTripItems';
 import MainContent from '../MainContent/MainContent';
 import TripModal from '../../components/TripModal/TripModal';
-import axios from 'axios';
 
-class Layout extends Component {
-  state = {
-    showModal: false,
-    friends: [],
-  };
+const Layout = () => {
+  // state = {
+  //   showModal: false,
+  //   friends: [],
+  // };
+  const [showModal, setShowModal] = useState(false);
+  const [friends, setFriends] = useState([]);
 
-  getFriends = () => {
+  const getFriends = () => {
     axios.get('http://localhost:3004/friends').then(({ data }) => {
-      this.setState({ friends: data });
+      setFriends(data);
     });
   };
 
-  toggleModalHandler = () => {
-    this.setState(prevState => {
-      return { showModal: !prevState.showModal };
-    });
+  const toggleModalHandler = () => {
+    setShowModal(!showModal);
   };
 
-  componentDidMount() {
-    this.getFriends();
-  }
+  useEffect(() => {
+    getFriends();
+  }, []);
 
-  render() {
-    return (
-      <>
-        {this.state.showModal && (
-          <TripModal
-            friends={this.state.friends}
-            show={this.state.showModal}
-            toggleModal={this.toggleModalHandler}
-          />
-        )}
-        <Header toggle={this.toggleModalHandler} />
-        <Block marginTop="20px">
-          <Grid.Row>
-            <Grid.Column size={3}>
-              <FriendsList header="Friends" items={this.state.friends} />
-            </Grid.Column>
-            <Grid.Column size={6}>
-              <MainContent />
-            </Grid.Column>
-            <Grid.Column size={3}>
-              <PastTripItems />
-            </Grid.Column>
-          </Grid.Row>
-        </Block>
+  return (
+    <>
+      {showModal && (
+        <TripModal
+          friends={friends}
+          show={showModal}
+          toggleModal={toggleModalHandler}
+        />
+      )}
+      <Header toggle={toggleModalHandler} />
+      <Block marginTop="20px">
+        <Grid.Row>
+          <Grid.Column size={3}>
+            <FriendsList header="Friends" items={friends} />
+          </Grid.Column>
+          <Grid.Column size={6}>
+            <MainContent />
+          </Grid.Column>
+          <Grid.Column size={3}>
+            <PastTripItems />
+          </Grid.Column>
+        </Grid.Row>
+      </Block>
 
-        <Footer />
-      </>
-    );
-  }
-}
+      <Footer />
+    </>
+  );
+};
 
 export default Layout;

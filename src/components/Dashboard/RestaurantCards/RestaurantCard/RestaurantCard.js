@@ -4,7 +4,7 @@ import { IMAGES } from '../../../../assets/images/category_images/Images';
 import styled, { css } from 'styled-components';
 
 const StyledCard = styled(Card)`
-  :hover {
+  &:hover {
     background-color: ${p => p.theme.colors.hover};
   }
 `;
@@ -20,9 +20,6 @@ const ImageContainer = styled.div(
 );
 
 const StyledBlock = styled(Block)`
-  h4 {
-    margin-bottom: 0;
-  }
   p.info {
     display: flex;
     justify-content: space-between;
@@ -31,22 +28,24 @@ const StyledBlock = styled(Block)`
 `;
 
 const imageSRC = info => {
-  const filteredImg = IMAGES[info.categories[0].shortName.toLowerCase()];
+  const filteredImg = IMAGES[info];
 
   return !!filteredImg ? filteredImg : IMAGES.unknown;
 };
 
-const RestaurantCard = ({ info }) => (
+const RestaurantCard = ({ info: { name, location, categories } }) => (
   <Grid.Column size={4}>
     <StyledCard>
       <Block>
-        <ImageContainer imgSrc={imageSRC(info)} />
+        <ImageContainer
+          imgSrc={imageSRC(categories[0].shortName.toLowerCase())}
+        />
         <StyledBlock>
-          <h4>{info.name}</h4>
+          <h4 style={{ marginBottom: 0 }}>{name}</h4>
           <p className="info">
-            <span>Category: {info.categories[0].shortName}</span>
+            <span>Category: {categories[0].shortName}</span>
           </p>
-          <p>{info.location.formattedAddress}</p>
+          <p>{location.formattedAddress}</p>
         </StyledBlock>
       </Block>
     </StyledCard>

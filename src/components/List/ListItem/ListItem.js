@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Flex } from '@actovos-consulting-group/ui-core';
-import { FaUserFriends as FriendIcon } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
 
 const DefaultImg = styled.img`
   border-radius: 50%;

@@ -1,23 +1,22 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Block } from '@actovos-consulting-group/ui-core';
 
 const StyledImg = styled.img`
   width: 100px;
   margin-right: 10px;
-  display: inline-block;
 `;
 
 const TripContainer = styled.div(
-  ({theme}) => css`
-  width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid ${theme.colors.cardBorderBottom};
+  ({ theme }) => css`
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid ${theme.colors.cardBorderBottom};
 
-  :hover {
-    background-color: ${theme.colors.hover}
-  }
-`
+    &:hover {
+      background-color: ${theme.colors.hover};
+    }
+  `,
 );
 
 const PastTripItem = () => (

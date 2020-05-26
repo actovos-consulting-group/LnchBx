@@ -12,16 +12,9 @@ const FriendListHeader = styled.div`
   border-bottom: 1px solid ${p => p.theme.colors.black};
 `;
 
-//Maybe make the getFriends call here instead of Layout
+//TODO: make the getFriends call here instead of Layout
 
-const FriendsList = ({
-  items = [],
-  header,
-  type = null,
-  toggle = () => null,
-}) => {
-  //if type != "sidebar" list item should not have button
-
+const FriendsList = ({ items = [], header, type, toggle = () => null }) => {
   const listItems = items.map(item => {
     return <FriendsListItem {...item} type={type} toggle={toggle} />;
   });
