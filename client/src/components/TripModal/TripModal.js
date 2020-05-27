@@ -13,7 +13,7 @@ import {
 import StorageHelper from '../../helpers/Storage';
 import FriendsList from '../Dashboard/FriendsList/FriendsList';
 
-const TripModal = ({ show, friends, toggleModal }) => {
+const TripModal = ({ show, friends, toggleModal, getSelectedRestaurant }) => {
   const [tripFriends, setTripFriends] = useState([]);
   const [friendOptions, setFriendOptions] = useState(friends);
   const [inputValue, setInputValue] = useState('');
@@ -58,6 +58,14 @@ const TripModal = ({ show, friends, toggleModal }) => {
     }
 
     toggleModal();
+    getSelectedRestaurant(data);
+
+    // pass TRUE back up to Loadable
+    // grab categories of all people in trip
+    // create array of category ID's that are present in each array
+    // randomly grab 1 ID
+    // call API with that ID
+    // present 3 recommendations of where to eat
   };
 
   return (
