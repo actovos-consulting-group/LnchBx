@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class Friend extends Model
+class Friend extends User
 {
     protected $fillable = [
         'user_id',
