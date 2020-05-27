@@ -1,0 +1,43 @@
+version: '2'
+services:
+  nginx:
+    image: actovos/grantholster-nginx-dev
+    ports:
+      - '8081:80'
+    volumes:
+      - ./:/app
+    networks:
+      - lnchbx
+
+  app:
+    image: actovosgroup/php-7.3-base
+    environment:
+      - 'DB_PORT=5432'
+      - 'DB_HOST=database'
+    command: php-fpm
+    working_dir: /app
+    volumes:
+      - ./:/app
+    networks:
+      - lnchbx
+  database:
+    image: postgres
+    environment:
+      POSTGRES_DB: lnchbx
+      POSTGRES_USER: lnchbx
+      POSTGRES_PASSWORD: lnchbx
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - '54320:5432'
+    networks:
+      - lnchbx
+    
+      
+
+volumes:
+  dbdata:
+
+networks:
+  lnchbx:
+    driver: bridge

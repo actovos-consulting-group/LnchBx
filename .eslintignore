@@ -2,3 +2,4 @@
 /server/git
 server/.vagrant
 public
+docker-compose.yml
