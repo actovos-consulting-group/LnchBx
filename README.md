@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/actovos-consulting-group/LnchBx/"><img src="./client/assets/lnchbx-logo.png" width="400" alt="Lnchbx Logo"></a>
+  <a href="https://github.com/actovos-consulting-group/LnchBx/"><img src="./client/src/assets/images/lnchbx-logo.png" width="400" alt="Lnchbx Logo"></a>
 </p>
 
 <p align="center">
