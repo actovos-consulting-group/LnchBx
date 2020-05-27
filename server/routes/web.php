@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/getCategories', 'CategoryController@getCategories');
-
 Route::namespace('users', 'UserController@getUsers');
