@@ -3,3 +3,4 @@
 server/.vagrant
 public
 docker-compose.yml
+env.js
