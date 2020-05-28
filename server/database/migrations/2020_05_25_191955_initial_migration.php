@@ -6,19 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class InitialMigration extends Migration
 {
-
     public function __construct()
     {
         $this->tables = [
             [
-                'trips', function (Blueprint $table) {
+                'trips',
+                function (Blueprint $table) {
                     $table->bigIncrements('id');
                     $table->unsignedInteger('creator_id');
                     $table->text('name');
                     $table->text('restaurant_name');
                     $table->timestamps();
 
-                    $table->foreign('creator_id')
+                    $table
+                        ->foreign('creator_id')
                         ->references('id')
                         ->on('users')
                         ->onUpdate('cascade')
@@ -26,28 +27,32 @@ class InitialMigration extends Migration
                 }
             ],
             [
-                'trips_users', function (Blueprint $table) {
+                'trips_users',
+                function (Blueprint $table) {
                     $table->unsignedInteger('trip_id');
                     $table->unsignedInteger('user_id');
 
-                    $table->foreign('trip_id')
+                    $table
+                        ->foreign('trip_id')
                         ->references('id')
                         ->on('trips')
                         ->onUpdate('cascade')
                         ->onDelete('cascade');
 
-                    $table->foreign('user_id')
+                    $table
+                        ->foreign('user_id')
                         ->references('id')
                         ->on('users')
                         ->onUpdate('cascade')
                         ->onDelete('cascade');
 
                     $table->timestamps();
-                },
+                }
             ],
 
             [
-                'categories', function (Blueprint $table) {
+                'categories',
+                function (Blueprint $table) {
                     $table->bigIncrements('id');
                     $table->text('api_id');
                     $table->text('name');
@@ -55,53 +60,59 @@ class InitialMigration extends Migration
                     $table->text('shortName');
                     $table->text('icon');
                     $table->timestamps();
-                },
+                }
             ],
 
             [
-                'categories_user', function (Blueprint $table) {
+                'category_user',
+                function (Blueprint $table) {
                     $table->unsignedInteger('category_id');
                     $table->unsignedInteger('user_id');
 
-                    $table->foreign('category_id')
+                    $table
+                        ->foreign('category_id')
                         ->references('id')
                         ->on('categories')
                         ->onUpdate('cascade')
                         ->onDelete('cascade');
 
-                    $table->foreign('user_id')
+                    $table
+                        ->foreign('user_id')
                         ->references('id')
                         ->on('users')
                         ->onUpdate('cascade')
                         ->onDelete('cascade');
 
                     $table->timestamps();
-                },
+                }
             ],
 
             [
-                'friends', function (Blueprint $table) {
+                'friends',
+                function (Blueprint $table) {
                     $table->bigIncrements('id');
                     $table->unsignedInteger('user_id');
                     $table->unsignedInteger('friend_id');
                     $table->timestamp('invite_sent');
                     $table->timestamp('friends_since');
 
-                    $table->foreign('user_id')
+                    $table
+                        ->foreign('user_id')
                         ->references('id')
                         ->on('users')
                         ->onUpdate('cascade')
                         ->onDelete('cascade');
 
-                    $table->foreign('friend_id')
+                    $table
+                        ->foreign('friend_id')
                         ->references('id')
                         ->on('users')
                         ->onUpdate('cascade')
                         ->onDelete('cascade');
 
                     $table->timestamps();
-                },
-            ],
+                }
+            ]
         ];
     }
     /**
