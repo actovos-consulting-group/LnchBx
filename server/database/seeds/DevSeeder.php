@@ -28,16 +28,43 @@ class DevSeeder extends Seeder
     public function seedUsers()
     {
         $devs = [
-            ["name" => 'Daniel', "email" => 'dan@ittybam.com'],
-            ["name" => 'Jaden', "email" => 'jaden@ittybam.com'],
-            ["name" => 'Mat', "email" => 'mmorris@ittybam.com'],
-            ["name" => 'Brayden', "email" => 'brobbins@ittybam.com']
+            [
+                "name" => 'Daniel',
+                "email" => 'dan@ittybam.com',
+                "image" =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/daniel.jpg'
+            ],
+            [
+                "name" => 'Jaden',
+                "email" => 'jaden@ittybam.com',
+                "image" =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/jaden.jpg'
+            ],
+            [
+                "name" => 'Mat',
+                "email" => 'mmorris@ittybam.com',
+                "image" =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/mat.jpg'
+            ],
+            [
+                "name" => 'Brayden',
+                "email" => 'brobbins@ittybam.com',
+                "image" =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/brayden.jpg'
+            ],
+            [
+                "name" => 'Tati',
+                "email" => 'tatianna@actovosgroup.com',
+                "image" =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/tati.jpg'
+            ]
         ];
 
         foreach ($devs as $dev) {
             User::create([
                 'name' => $dev['name'],
                 'email' => $dev['email'],
+                'image' => $dev['image'],
                 'password' => Hash::make(env('BASE_PW'))
             ]);
         }
@@ -100,9 +127,9 @@ class DevSeeder extends Seeder
         $users = User::all();
 
         $users->each(function ($user) use ($categories) {
-            $randomCategories = $categories->random(20);
+            $randomCategories = $categories->random(50);
             $randomCategories->each(function ($category) use ($user) {
-                DB::table('categories_user')->insert([
+                DB::table('category_user')->insert([
                     'category_id' => $category->id,
                     'user_id' => $user->id
                 ]);

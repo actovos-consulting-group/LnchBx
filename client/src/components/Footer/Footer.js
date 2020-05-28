@@ -5,7 +5,8 @@ const StyledFooter = styled.footer`
   background-color: ${p => p.theme.colors.black};
   color: white;
   text-align: center;
-  position: relative;
+  position: fixed;
+  width: 100%;
   height: 40px;
   bottom: 0;
   left: 0;

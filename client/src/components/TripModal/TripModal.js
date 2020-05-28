@@ -13,7 +13,7 @@ import {
 import StorageHelper from '../../helpers/Storage';
 import FriendsList from '../Dashboard/FriendsList/FriendsList';
 
-const TripModal = ({ show, friends, toggleModal }) => {
+const TripModal = ({ show, friends, toggleModal, getSelectedRestaurant }) => {
   const [tripFriends, setTripFriends] = useState([]);
   const [friendOptions, setFriendOptions] = useState(friends);
   const [inputValue, setInputValue] = useState('');
@@ -58,6 +58,7 @@ const TripModal = ({ show, friends, toggleModal }) => {
     }
 
     toggleModal();
+    getSelectedRestaurant(data);
   };
 
   return (
