@@ -38,9 +38,15 @@ const StyledDiv = styled(Flex)`
   align-content: center;
 `;
 
+const LogoContainer = styled(Flex)`
+  width: 130px;
+`;
+
 const Header = ({ toggle }) => (
   <StyledNav>
-    <Logo />
+    <LogoContainer>
+      <Logo />
+    </LogoContainer>
     <Button onClick={toggle}>New LunchTrip</Button>
     <StyledDiv>
       <DefaultImg />

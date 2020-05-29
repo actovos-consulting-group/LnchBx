@@ -10,5 +10,5 @@ export const restaurantQueries = {
 };
 
 export const API = {
-  host: 'http://localhost:8000/api',
+  host: 'http://lnchbx.local:8000',
 };

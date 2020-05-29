@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('sso-verify', 'LoginController@googleSSO');
+
 Route::namespace('users', 'UserController@getUsers');
