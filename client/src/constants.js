@@ -16,5 +16,4 @@ export const API = {
 export const GOOGLE = {
   client_id:
     '422036453944-e1etaq7dfsl18s8tc40eu6akng1q935v.apps.googleusercontent.com',
-  client_secret: 'kKXdwdgUlN0ATX2ARAmBPEsH',
 };

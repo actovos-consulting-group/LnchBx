@@ -20,7 +20,7 @@ const Layout = () => {
   const { userData } = useContext(AuthContext);
 
   const getUserInfo = () => {
-    axios.get(`${API.host}/api/${userData.id}`).then(({ data }) => {
+    axios.get(`${API.host}/api/me/${userData.id}`).then(({ data }) => {
       setUserInfo(data[0]);
     });
   };
@@ -51,6 +51,7 @@ const Layout = () => {
       const categories = friend.categories.map(cat => {
         return cat.api_id;
       });
+      // console.log(categories);
       return [...arr, categories];
     }, []);
 
