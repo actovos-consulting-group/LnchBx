@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('friends/{id}', 'FriendController@getFriends');
 Route::get('me', 'UserController@getMe');
+Route::post('sso-verify', 'LoginController@googleSSO');
+
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();

@@ -12,3 +12,9 @@ export const restaurantQueries = {
 export const API = {
   host: 'http://127.0.0.1:8000',
 };
+
+export const GOOGLE = {
+  client_id:
+    '***REMOVED***',
+  client_secret: '***REMOVED***',
+};

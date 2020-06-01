@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Block, Card, Grid } from '@actovos-consulting-group/ui-core';
+import React from 'react';
+import { Grid } from '@actovos-consulting-group/ui-core';
 import RestaurantCard from './RestaurantCard/RestaurantCard';
-import axios from 'axios';
-import { FOURSQUARE } from '../../../constants';
 
 const RestaurantCards = ({ restaurants }) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState('');
+  // const [selectedRestaurant, setSelectedRestaurant] = useState('');
 
   return (
     <Grid.Row>
