@@ -1,13 +1,10 @@
 import React, { useContext } from 'react';
-import axios from 'axios';
-import { Flex, Button } from '@actovos-consulting-group/ui-core';
-import { FaGoogle } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
+import { Flex } from '@actovos-consulting-group/ui-core';
 import { GoogleLogin } from 'react-google-login';
 import styled from 'styled-components';
 import Logo from './Logo/Logo';
 import { AuthContext } from '../App';
-import { getXSRFToken } from '../helpers/axios';
-import { API } from '../constants';
+import { GOOGLE } from '../constants';
 
 const Column = styled(Flex)`
   width: 100vw;
@@ -26,30 +23,21 @@ const LogoContainer = styled(Flex)`
 `;
 
 const responseGoogle = response => {
-  console.log(response);
-  //make API call to laravel API
-  const token = JSON.stringify(response.code);
-
-  // pass accessToken
-  // take accessToken and sent to API
-  // take response from laravel API
-  // push user object into session/localstorage
-  // use useEffect in app.js
+  alert('Trouble signing in to Google. Try again');
 };
 
 const Login = () => {
-  const auth = useContext(AuthContext);
+  const { handleLogin } = useContext(AuthContext);
 
   return (
     <>
       <Flex>
         <Column flexDirection="column">
           <GoogleLogin
-            clientId="422036453944-lm20vv0ermsb87pdfnl4fkvvlrbro126.apps.googleusercontent.com"
+            clientId={GOOGLE.client_id}
             buttonText="Login with Google"
-            onSuccess={responseGoogle}
+            onSuccess={response => handleLogin(response)}
             responseType="code"
-            // onSuccess={() => auth.handleLogin(true)}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
             // isSignedIn={true}

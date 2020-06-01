@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Button, Flex } from '@actovos-consulting-group/ui-core';
 import { FaUser } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
 import Logo from '../Logo/Logo';
+import { AuthContext } from '../../App';
 
-const DefaultImg = styled(FaUser)(
+const DefaultImg = styled.img(
   () => css`
     border-radius: 50%;
     border: 1px solid ${p => p.theme.colors.white};
@@ -42,17 +43,22 @@ const LogoContainer = styled(Flex)`
   width: 130px;
 `;
 
-const Header = ({ toggle }) => (
-  <StyledNav>
-    <LogoContainer>
-      <Logo />
-    </LogoContainer>
-    <Button onClick={toggle}>New LunchTrip</Button>
-    <StyledDiv>
-      <DefaultImg />
-      <h3>Daniel</h3>
-    </StyledDiv>
-  </StyledNav>
-);
+const Header = ({ toggle }) => {
+  const { userData, handleLogout } = useContext(AuthContext);
+
+  return (
+    <StyledNav>
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
+      <Button onClick={toggle}>New LunchTrip</Button>
+      <StyledDiv>
+        <DefaultImg src={userData.image} />
+        <h3>{userData.name}</h3>
+        <Button onClick={handleLogout}>Logout</Button>
+      </StyledDiv>
+    </StyledNav>
+  );
+};
 
 export default Header;

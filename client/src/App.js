@@ -1,16 +1,13 @@
 import React, { useState, createContext, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 import Layout from './containers/Layout/Layout';
 import { Provider } from '@actovos-consulting-group/ui-core';
 import MyTheme from './theme';
-import {
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-  useLocation,
-} from 'react-router-dom';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import Login from './components/Login';
+import { API } from './constants';
+import StorageHelper from './helpers/Storage';
 
 const PrivateRoute = ({ children, isLoggedIn, ...rest }) => {
   return (
@@ -41,31 +38,51 @@ const PublicRoute = ({ children, isLoggedIn, ...rest }) => {
 };
 
 export const AuthContext = createContext({
-  isLoggedIn: 'asdflkj',
+  isLoggedIn: '',
   setIsLoggedIn: () => null,
   user: {},
 });
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({});
 
   let history = useHistory();
-  let location = useLocation();
-  let { from } = location.state || { from: { pathname: '/' } };
+
+  const handleLogin = response => {
+    const token = JSON.stringify(response.code);
+    try {
+      axios.post(`${API.host}/api/sso-verify`, { token }).then(({ data }) => {
+        StorageHelper.set('user', data);
+        setIsLoggedIn(true);
+        setUserData(data);
+        history.push('/dashboard');
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleLogout = () => {
+    StorageHelper.delete('user');
+    setIsLoggedIn(false);
+  };
+
+  const authData = { isLoggedIn, handleLogin, userData, handleLogout };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      alert('logged in');
-      history.push('/dashboard');
+    isLoggedIn && history.push('/dashboard');
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    //TODO: this is terrible. have to secure
+    const user = StorageHelper.get('user');
+    if (!!user) {
+      setIsLoggedIn(true);
+      setUserData(user);
     }
   }, []);
 
-  const handleLogin = value => {
-    setIsLoggedIn(value);
-    history.push('/dashboard');
-  };
-
-  const authData = { isLoggedIn, handleLogin };
   return (
     <Provider theme={MyTheme}>
       <AuthContext.Provider value={authData}>

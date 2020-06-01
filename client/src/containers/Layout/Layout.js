@@ -1,11 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import {
-  Grid,
-  Block,
-  Modal,
-  Loadable,
-} from '@actovos-consulting-group/ui-core';
+import { Grid, Block, Loadable } from '@actovos-consulting-group/ui-core';
 import intersection from 'lodash/intersection';
 import Header from '../../components/Header/Header';
 import FriendsList from '../../components/Dashboard/FriendsList/FriendsList';
@@ -13,7 +8,8 @@ import Footer from '../../components/Footer/Footer';
 import PastTripItems from '../../components/Dashboard/PastTrips/PastTripItems';
 import MainContent from '../MainContent/MainContent';
 import TripModal from '../../components/TripModal/TripModal';
-import { API, FOURSQUARE, restaurantQueries } from '../../constants';
+import { API, restaurantQueries } from '../../constants';
+import { AuthContext } from '../../App';
 
 const Layout = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,16 +17,16 @@ const Layout = () => {
   const [friends, setFriends] = useState([]);
   const [loadingState, setLoadingState] = useState(true);
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const { userData } = useContext(AuthContext);
 
   const getUserInfo = () => {
-    axios.get(`${API.host}/me`).then(({ data }) => {
+    axios.get(`${API.host}/api/${userData.id}`).then(({ data }) => {
       setUserInfo(data[0]);
     });
   };
 
   const getFriends = () => {
-    //TODO: need to set up routing and sso to get userID
-    axios.get(`${API.host}/friends/1`).then(({ data }) => {
+    axios.get(`${API.host}/api/friends/${userData.id}`).then(({ data }) => {
       setFriends(data);
     });
   };
@@ -63,6 +59,7 @@ const Layout = () => {
     const selectedCat =
       sameCategories[Math.floor(Math.random() * sameCategories.length)];
 
+    //TODO: should this go on the server so the API keys arent exposed?
     axios
       .get(
         `${restaurantQueries.getSelectedRestaurant}&categoryId=${selectedCat}&sortByPopularity=1&limit=3&openNow=1`,
