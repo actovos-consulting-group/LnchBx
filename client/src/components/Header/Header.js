@@ -44,7 +44,7 @@ const LogoContainer = styled(Flex)`
 `;
 
 const Header = ({ toggle }) => {
-  const { userData, handleLogout } = useContext(AuthContext);
+  const { userData } = useContext(AuthContext);
 
   return (
     <StyledNav>
@@ -55,7 +55,6 @@ const Header = ({ toggle }) => {
       <StyledDiv>
         <DefaultImg src={userData.image} />
         <h3>{userData.name}</h3>
-        <Button onClick={handleLogout}>Logout</Button>
       </StyledDiv>
     </StyledNav>
   );

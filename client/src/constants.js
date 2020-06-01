@@ -16,5 +16,4 @@ export const API = {
 export const GOOGLE = {
   client_id:
     '***REMOVED***',
-  client_secret: '***REMOVED***',
 };
