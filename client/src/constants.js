@@ -1,7 +1,7 @@
 export const FOURSQUARE = {
-  url: 'https://api.foursquare.com/v2/venues',
-  client_id: '***REMOVED***',
-  client_secret: '***REMOVED***',
+  url: process.env.REACT_APP_FOURSQUARE_URL,
+  client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
+  client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
 };
 
 export const restaurantQueries = {
@@ -14,6 +14,5 @@ export const API = {
 };
 
 export const GOOGLE = {
-  client_id:
-    '***REMOVED***',
+  client_id: process.env.REACT_APP_GOOGLE_ID,
 };
