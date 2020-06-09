@@ -1,10 +1,10 @@
 import React, { useState, createContext, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import Layout from './containers/Layout/Layout';
 import { Provider } from '@actovos-consulting-group/ui-core';
-import MyTheme from './theme';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import Layout from './containers/Layout/Layout';
+import MyTheme from './theme';
 import Login from './components/Login';
 import { API } from './constants';
 import StorageHelper from './helpers/Storage';
@@ -33,6 +33,7 @@ const PublicRoute = ({ children, isLoggedIn, ...rest }) => {
   if (isLoggedIn) {
     return <Redirect to="/dashboard" />;
   } else {
+    // TODO: this should do something else *shrug*
     return children;
   }
 };
@@ -75,7 +76,7 @@ const App = () => {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    //TODO: this is terrible. have to secure
+    // TODO: this is terrible. have to secure
     const user = StorageHelper.get('user');
     if (!!user) {
       setIsLoggedIn(true);

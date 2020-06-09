@@ -1,7 +1,9 @@
+import config from './config';
+
 export const FOURSQUARE = {
-  url: process.env.REACT_APP_FOURSQUARE_URL,
-  client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
-  client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
+  url: config.FOURSQUARE_URL,
+  client_id: config.FOURSQUARE_CLIENT_ID,
+  client_secret: config.FOURSQUARE_CLIENT_SECRET,
 };
 
 export const restaurantQueries = {
@@ -14,5 +16,5 @@ export const API = {
 };
 
 export const GOOGLE = {
-  client_id: process.env.REACT_APP_GOOGLE_ID,
+  client_id: config.GOOGLE_CLIENT_ID,
 };
