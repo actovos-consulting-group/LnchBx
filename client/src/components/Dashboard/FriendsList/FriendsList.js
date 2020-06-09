@@ -12,7 +12,7 @@ const FriendListHeader = styled.div`
   border-bottom: 1px solid ${p => p.theme.colors.black};
 `;
 
-//TODO: make the getFriends call here instead of Layout
+// TODO: make the getFriends call here instead of Layout
 
 const FriendsList = ({ items = [], header, type, toggle = () => null }) => {
   const listItems = items.map(item => {
