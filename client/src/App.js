@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect } from 'react';
-import './App.css';
 import axios from 'axios';
 import { Provider } from '@actovos-consulting-group/ui-core';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';

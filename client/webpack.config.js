@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-env node */
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 require("dotenv").config();
 
@@ -42,17 +41,7 @@ module.exports = (_, argv) => {
         },
         {
           // For production, we output a separately cachable stylesheet.
-          test: /\.css$/,
-          use: [
-            // Uses style-loader in development to enable hot style replacement (HMR).
-            MiniCssExtractPlugin.loader,
-            // Remove or comment out the `modules` property (or set it to `false`) to disable css-modules.
-            {
-              loader: "css-loader",
-              options: { importLoaders: 1, modules: "local" }
-            },
-            "postcss-loader"
-          ]
+          test: /\.css$/
         },
         {
           // Any file types which you want to add loaders for should be added to this
@@ -86,10 +75,6 @@ module.exports = (_, argv) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css"
-      }),
       new ManifestPlugin({
         writeToFileEmit: true,
         fileName: "../../storage/webpackManifest.json"
