@@ -10,7 +10,6 @@ module.exports = {
     browser: true,
   },
   parserOptions: {
-    sourceType: "module",
     ecmaVersion: "2019",
   },
   rules: {
