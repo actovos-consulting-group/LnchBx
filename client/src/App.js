@@ -78,7 +78,7 @@ const App = () => {
   useEffect(() => {
     // TODO: this is terrible. have to secure
     const user = StorageHelper.get('user');
-    if (!!user) {
+    if (user) {
       setIsLoggedIn(true);
       setUserData(user);
     }
