@@ -23,7 +23,7 @@ const LogoContainer = styled(Flex)`
 `;
 
 const responseGoogle = response => {
-  alert('Trouble signing in to Google. Try again');
+  console.log(response);
 };
 
 const Login = () => {
