@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Button, Flex } from '@actovos-consulting-group/ui-core';
-import { FaUser } from '@actovos-consulting-group/ui-core/esm/Icons/fa';
-import Logo from '../Logo/Logo';
 import { AuthContext } from '../../App';
+import Logo from '../Logo/Logo';
 
 const DefaultImg = styled.img(
   () => css`

@@ -30,7 +30,7 @@ const StyledBlock = styled(Block)`
 const imageSRC = info => {
   const filteredImg = IMAGES[info];
 
-  return !!filteredImg ? filteredImg : IMAGES.unknown;
+  return filteredImg || IMAGES.unknown;
 };
 
 const RestaurantCard = ({ info: { id, name, location, categories } }) => (
