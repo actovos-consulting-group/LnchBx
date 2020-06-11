@@ -1,23 +1,9 @@
 {
   "name": "lnchbx-global",
   "private": true,
-  "version": "0.0.0",
-  "description": "ACG lnchbx helper",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "@actovos-consulting-group/ui-core": "^1.4.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.2",
-    "json-server": "^0.16.1",
-    "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "styled-components": "^5.1.0"
-  },
   "scripts": {
     "bootstrap": "dotenvi -o ./server -s",
     "eslint": "eslint client/src",
@@ -27,13 +13,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@actovos-consulting-group/eslint-config-acg": "^0.1.3",
+    "@actovos-consulting-group/eslint-config-acg": "1.0.1",
+    "@actovos-consulting-group/prettier-config": "1.0.2",
     "@prettier/plugin-php": "^0.11.2",
     "dotenv": "^8.2.0",
     "dotenvi": "^0.8.0",
-    "eslint": "^6.5.1",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint": "^7.2.0",
+    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "husky": "^3.0.8",
     "lint-staged": "^9.4.1",
     "prettier": "^1.18.2"
@@ -48,5 +35,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "aws-sdk": "^2.607.0"
   }
 }

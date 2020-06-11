@@ -1,7 +1,7 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
 import { Block, Card, Grid } from '@actovos-consulting-group/ui-core';
 import { IMAGES } from '../../../../assets/images/category_images/Images';
-import styled, { css } from 'styled-components';
 
 const StyledCard = styled(Card)`
   &:hover {
@@ -30,12 +30,12 @@ const StyledBlock = styled(Block)`
 const imageSRC = info => {
   const filteredImg = IMAGES[info];
 
-  return !!filteredImg ? filteredImg : IMAGES.unknown;
+  return filteredImg || IMAGES.unknown;
 };
 
-const RestaurantCard = ({ info: { name, location, categories } }) => (
+const RestaurantCard = ({ info: { id, name, location, categories } }) => (
   <Grid.Column size={4}>
-    <StyledCard>
+    <StyledCard key={id}>
       <Block>
         <ImageContainer
           imgSrc={imageSRC(categories[0].shortName.toLowerCase())}

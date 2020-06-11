@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::namespace('users', 'UserController@getUsers');
+
+Route::fallback(function () {
     return view('welcome');
 });
-
-Route::namespace('users', 'UserController@getUsers');
