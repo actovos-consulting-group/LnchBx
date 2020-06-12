@@ -16,7 +16,9 @@ const FriendListHeader = styled.div`
 
 const FriendsList = ({ items = [], header, type, toggle = () => null }) => {
   const listItems = items.map(item => {
-    return <FriendsListItem {...item} type={type} toggle={toggle} />;
+    return (
+      <FriendsListItem key={item.id} {...item} type={type} toggle={toggle} />
+    );
   });
 
   return (
