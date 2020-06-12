@@ -19,12 +19,12 @@ const TripContainer = styled.div(
   `,
 );
 
-const PastTripItem = () => (
+const PastTripItem = ({ info: { name, restaurant_name } }) => (
   <TripContainer>
     <StyledImg src="https://i.imgur.com/WPcy3B6.jpg" />
     <Block display="inline-block">
-      <h3>Trip name</h3>
-      <h4>Restuarant name</h4>
+      <h3>{name}</h3>
+      <h4>{restaurant_name}</h4>
     </Block>
   </TripContainer>
 );

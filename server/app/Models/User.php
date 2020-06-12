@@ -47,4 +47,9 @@ class User extends Authenticatable
             'friend_id'
         );
     }
+
+    public function trips()
+    {
+        return $this->belongsToMany(Trip::class, 'trips_users');
+    }
 }

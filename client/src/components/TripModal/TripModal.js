@@ -40,6 +40,7 @@ const TripModal = ({ show, friends, toggleModal, getSelectedRestaurant }) => {
   };
 
   const createNewTrip = () => {
+    // TODO: validation on required input field
     const tripName = inputValue;
     const data = {
       name: tripName,
@@ -73,6 +74,7 @@ const TripModal = ({ show, friends, toggleModal, getSelectedRestaurant }) => {
             label="Name this Trip"
             name="trip name"
             value={inputValue}
+            required
             onChange={e => setInputValue(e.target.value)}
           />
         </Block>
