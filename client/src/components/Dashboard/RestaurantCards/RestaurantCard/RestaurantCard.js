@@ -21,9 +21,6 @@ const ImageContainer = styled.div(
 );
 
 const StyledBlock = styled(Block)`
-  display: flex;
-  height: auto;
-  flex-direction: column;
   p.info {
     display: flex;
     justify-content: space-between;
@@ -55,6 +52,8 @@ const RestaurantCard = ({
               <span>Category: {categories[0].shortName}</span>
             </p>
             <p>{location.formattedAddress}</p>
+          </StyledBlock>
+          <Block>
             {isTrip && (
               <Button
                 fullWidth
@@ -63,7 +62,7 @@ const RestaurantCard = ({
                 Select This Restaurant
               </Button>
             )}
-          </StyledBlock>
+          </Block>
         </Block>
       </StyledCard>
     </Grid.Column>
