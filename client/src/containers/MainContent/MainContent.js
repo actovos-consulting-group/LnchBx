@@ -8,10 +8,14 @@ const StyledBlock = styled(Block)`
   overflow: scroll;
 `;
 
-const MainContent = ({ restaurants }) => {
+const MainContent = ({ restaurants, isTrip, storeSelectedRestaurant }) => {
   return (
     <StyledBlock>
-      <RestaurantCards restaurants={restaurants} />
+      <RestaurantCards
+        restaurants={restaurants}
+        isTrip={isTrip}
+        storeSelectedRestaurant={storeSelectedRestaurant}
+      />
     </StyledBlock>
   );
 };

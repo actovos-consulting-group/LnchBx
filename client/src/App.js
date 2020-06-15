@@ -59,6 +59,7 @@ const App = () => {
         history.push('/dashboard');
       });
     } catch (error) {
+      // TODO: need better handling
       alert(error);
     }
   };

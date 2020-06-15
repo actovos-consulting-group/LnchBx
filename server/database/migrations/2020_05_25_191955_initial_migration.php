@@ -16,6 +16,7 @@ class InitialMigration extends Migration
                     $table->unsignedInteger('creator_id');
                     $table->text('name');
                     $table->text('restaurant_name');
+                    $table->text('restaurant_id');
                     $table->timestamps();
 
                     $table

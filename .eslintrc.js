@@ -13,10 +13,6 @@ module.exports = {
     ecmaVersion: "2019",
   },
   rules: {
-    "no-unused-vars": "error",
-    "no-unused-expressions": "error",
-    "no-extra-boolean-cast": "error",
-    "import/no-cycle": "error",
     "no-warning-comments": "warn",
     "no-use-before-define": ["error", { functions: true }],
     "react/jsx-props-no-spreading": "off",
