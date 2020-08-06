@@ -1,21 +1,24 @@
-FROM actovosgroup/php-7.3-base:latest
-
-# install node/npm for building JS/ENV dynamically
-RUN apk add --update nodejs nodejs-npm
+FROM actovosgroup/php-7.3-nginx:latest
 
 WORKDIR /app
 
+COPY deploy/build_run_app.sh /init.d
+RUN chmod +x /init.d/build_run_app.sh
+
+COPY package.json .
+COPY package-lock.json* .
+RUN npm i
+
+COPY server/composer.json ./server/
+COPY server/composer.lock* ./server/
+RUN composer install --no-scripts --no-autoloader --working-dir ./server
+
+COPY client/package.json ./client/
+COPY client/package-lock.json ./client/
+RUN npm i --prefix ./client
+
 COPY . .
 
-RUN ["chmod", "+x", "./deploy/build_run_app.sh"]
-
-RUN chmod -R 777 ./server/storage ./server/bootstrap
-
-VOLUME /app
-
-RUN php ./server/artisan cache:clear \
-    && php ./server/artisan config:clear
-
-CMD ["sh", "/app/deploy/build_run_app.sh"]
+RUN chown -R www-data:www-data server/storage
 
 EXPOSE 80

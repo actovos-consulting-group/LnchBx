@@ -1,23 +1,20 @@
 version: '2'
 services:
-  nginx:
-    image: actovos/grantholster-nginx-dev
+  app:
+    build:
+      context: ./
     ports:
       - '8081:80'
-    volumes:
-      - ./:/app
-    networks:
-      - lnchbx
-
-  app:
-    image: actovosgroup/php-7.3-base
     environment:
-      - 'DB_PORT=5432'
-      - 'DB_HOST=database'
-    command: php-fpm
+      APP_ENV: local
+      DB_PORT: 5432
+      DB_HOST: database
+      AWS_REGION: us-west-2
+      ROOT_DIR: /app/server/public
     working_dir: /app
     volumes:
-      - ./:/app
+      - ./server:/app/server
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
     networks:
       - lnchbx
   database:
@@ -32,12 +29,8 @@ services:
       - '54320:5432'
     networks:
       - lnchbx
-    
-      
-
 volumes:
   dbdata:
-
 networks:
   lnchbx:
     driver: bridge
