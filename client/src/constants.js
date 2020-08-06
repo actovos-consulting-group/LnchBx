@@ -12,7 +12,7 @@ export const restaurantQueries = {
 };
 
 export const API = {
-  host: 'http://127.0.0.1:8000',
+  host: window.location.origin,
 };
 
 export const GOOGLE = {

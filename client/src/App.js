@@ -38,7 +38,7 @@ const PublicRoute = ({ children, isLoggedIn, ...rest }) => {
 };
 
 export const AuthContext = createContext({
-  isLoggedIn: '',
+  isLoggedIn: false,
   setIsLoggedIn: () => null,
   user: {},
 });
@@ -94,6 +94,7 @@ const App = () => {
           <PrivateRoute path="/dashboard" isLoggedIn={isLoggedIn}>
             <Layout />
           </PrivateRoute>
+          <Route path="*" render={() => <Redirect to="/login" />} />
         </Switch>
       </AuthContext.Provider>
     </Provider>
