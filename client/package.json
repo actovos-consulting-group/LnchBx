@@ -5,7 +5,7 @@
   "description": "LNCHBX helper app",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open --progress --hot --inline",
+    "dev": "webpack-dev-server --mode development --hot --client-log-level silent",
     "build:dev": "rm -rf ../server/public/bundle && webpack --mode development --progress",
     "build": "rm -rf ../server/public/bundle && webpack --mode production --progress",
     "test": "jest --env=jsdom --maxWorkers=4 --testPathPattern=\"spec.js\""
