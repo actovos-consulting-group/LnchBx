@@ -1,0 +1,27 @@
+services:
+  app:
+    build: ./
+    primary: true
+    exposePort: 80
+    environment:
+      - name: APP_ENV
+        value: 'local'
+      - name: AWS_REGION
+        value: 'us-west-2'
+      - name: AWS_ACCESS_KEY_ID
+        value: '${AWS_ACCESS_KEY_ID}'
+      - name: AWS_SECRET_ACCESS_KEY
+        value: '${AWS_SECRET_ACCESS_KEY}'
+      - name: DB_PORT
+        value: 5432
+      - name: ROOT_DIR
+        value: /app/server/public
+  database:
+    image: postgres
+    environment:
+      - name: POSTGRES_DB
+        value: 'lnchbx'
+      - name: POSTGRES_USER
+        value: 'lnchbx'
+      - name: POSTGRES_PASSWORD
+        value: 'lnchbx'
