@@ -11,21 +11,24 @@ import TripModal from '../../components/TripModal/TripModal';
 import ConfirmModal from '../../components/Modal/ConfirmModal';
 import { API, restaurantQueries } from '../../constants';
 import { AuthContext } from '../../App';
+import CategoriesModal from '../../components/Modal/CategoriesModal';
 
 const Layout = () => {
+  const { userData } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState();
   const [showModal, setShowModal] = useState(false);
   const [confirmModal, setConfirmModal] = useState({
     show: false,
     name: '',
   });
-  const [userInfo, setUserInfo] = useState();
+  const [categoriesModal, setCategoriesModal] = useState(false);
   const [friends, setFriends] = useState([]);
+  const [allCategories, setAllCategories] = useState([]);
   const [loadingState, setLoadingState] = useState(true);
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [isTrip, setIsTrip] = useState(false);
   const [tripInfo, setTripInfo] = useState({});
   const [pastTrips, setPastTrips] = useState([]);
-  const { userData } = useContext(AuthContext);
 
   const getUserInfo = () => {
     axios.get(`${API.host}/api/me/${userData.id}`).then(({ data }) => {
@@ -36,6 +39,12 @@ const Layout = () => {
   const getFriends = () => {
     axios.get(`${API.host}/api/friends/${userData.id}`).then(({ data }) => {
       setFriends(data);
+    });
+  };
+
+  const getAllCategories = () => {
+    axios.get(`${API.host}/api/categories`).then(({ data }) => {
+      setAllCategories(data);
     });
   };
 
@@ -58,6 +67,10 @@ const Layout = () => {
 
   const toggleConfirmModal = () => {
     setConfirmModal({ show: !confirmModal, name: '' });
+  };
+
+  const toggleCategoriesModal = () => {
+    setCategoriesModal(prevState => !prevState);
   };
 
   const getSelectedRestaurant = tripData => {
@@ -101,7 +114,7 @@ const Layout = () => {
 
           setLoadingState(false);
         } else {
-          alert('Picky Picky! We didnt find any restaurants. Try again.');
+          alert('Picky Picky! No restaurants found');
           getAllRestaurants();
         }
       });
@@ -137,6 +150,7 @@ const Layout = () => {
   useEffect(() => {
     getUserInfo();
     getFriends();
+    getAllCategories();
     getPastTrips();
     getAllRestaurants();
   }, []);
@@ -154,7 +168,18 @@ const Layout = () => {
       {confirmModal.show && (
         <ConfirmModal toggleModal={toggleConfirmModal} info={confirmModal} />
       )}
-      <Header toggle={toggleModalHandler} />
+      {categoriesModal && (
+        <CategoriesModal
+          toggleCategoryModal={toggleCategoriesModal}
+          show={categoriesModal}
+          userCats={userInfo.categories}
+          allCats={allCategories}
+        />
+      )}
+      <Header
+        toggle={toggleModalHandler}
+        toggleCategoryModal={toggleCategoriesModal}
+      />
       <Block marginTop="20px">
         <Grid.Row>
           <Grid.Column size={3}>

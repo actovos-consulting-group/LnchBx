@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Button, Flex } from '@actovos-consulting-group/ui-core';
+import { Block, Button, Flex, Alert } from '@actovos-consulting-group/ui-core';
+import { FaCog } from 'react-icons/fa';
+import { GoogleLogout } from 'react-google-login';
 import { AuthContext } from '../../App';
 import Logo from '../Logo/Logo';
+import Dropdown from '../Dropdown';
+import { GOOGLE } from '../../constants';
 
 const DefaultImg = styled.img(
   () => css`
@@ -36,14 +40,22 @@ const StyledDiv = styled(Flex)`
   display: flex;
   justify-content: space-between;
   align-content: center;
+  padding-right: 1em;
 `;
 
 const LogoContainer = styled(Flex)`
   width: 130px;
 `;
 
-const Header = ({ toggle }) => {
+const Header = ({ toggle, toggleCategoryModal }) => {
   const { userData } = useContext(AuthContext);
+  const [settingsToggle, setSettingsToggle] = useState(false);
+
+  const settingsToggleHandler = () => {
+    setSettingsToggle(prevState => {
+      return !prevState;
+    });
+  };
 
   return (
     <StyledNav>
@@ -53,7 +65,17 @@ const Header = ({ toggle }) => {
       <Button onClick={toggle}>New LunchTrip</Button>
       <StyledDiv>
         <DefaultImg src={userData.image} />
-        <h3>{userData.name}</h3>
+        <h3 dropDownToggle="toggle">{userData.name}</h3>
+        <FaCog
+          onClick={settingsToggleHandler}
+          style={{ position: 'relative', top: '1.25em', left: '1em' }}
+        />
+        <Dropdown toggleSettings={settingsToggle}>
+          <li onClick={toggleCategoryModal}>Your Categories</li>
+          <li>
+            <GoogleLogout clientId={GOOGLE.client_id} buttonText="Logout" />
+          </li>
+        </Dropdown>
       </StyledDiv>
     </StyledNav>
   );
