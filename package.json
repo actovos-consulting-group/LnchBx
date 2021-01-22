@@ -8,7 +8,7 @@
     "bootstrap": "dotenvi -o ./server -s",
     "eslint": "eslint client/src",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"docker-compose up -d database\" \"cd server && php artisan serve\" \"cd client && npm run dev\""
+    "dev": "concurrently \"docker-compose up\" \"cd server && php artisan serve\" \"cd client && npm run dev\""
   },
   "keywords": [],
   "author": "",
