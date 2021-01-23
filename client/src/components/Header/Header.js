@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Block, Button, Flex, Alert } from '@actovos-consulting-group/ui-core';
@@ -48,7 +49,7 @@ const LogoContainer = styled(Flex)`
 `;
 
 const Header = ({ toggle, toggleCategoryModal }) => {
-  const { userData } = useContext(AuthContext);
+  const { userData, handleLogout } = useContext(AuthContext);
   const [settingsToggle, setSettingsToggle] = useState(false);
 
   const settingsToggleHandler = () => {
@@ -72,8 +73,12 @@ const Header = ({ toggle, toggleCategoryModal }) => {
         />
         <Dropdown toggleSettings={settingsToggle}>
           <li onClick={toggleCategoryModal}>Your Categories</li>
-          <li>
-            <GoogleLogout clientId={GOOGLE.client_id} buttonText="Logout" />
+          <li
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            Logout
           </li>
         </Dropdown>
       </StyledDiv>

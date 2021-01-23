@@ -13,6 +13,7 @@ class LoginController extends Controller
 {
     public function googleSSO(Request $request)
     {
+        // dd($request->url());
         //take request data and send to google
         // return $request->token;
 
@@ -21,7 +22,7 @@ class LoginController extends Controller
             "client_id" => env('GOOGLE_CLIENT_ID'),
             "client_secret" => env('GOOGLE_CLIENT_SECRET'),
             "grant_type" => "authorization_code",
-            "redirect_uri" => "http://localhost:8080"
+            "redirect_uri" => $request->url()
         ];
 
         $client = new Client();
