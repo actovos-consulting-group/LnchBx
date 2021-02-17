@@ -2,11 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Block } from '@actovos-consulting-group/ui-core';
 
-const StyledImg = styled.img`
-  width: 100px;
-  margin-right: 10px;
-`;
-
 const TripContainer = styled.div(
   ({ theme }) => css`
     width: 100%;
@@ -19,12 +14,16 @@ const TripContainer = styled.div(
   `,
 );
 
-const PastTripItem = ({ info: { name, restaurant_name } }) => (
+const PastTripItem = ({ info: { name, restaurant_name, created_at } }) => (
   <TripContainer>
-    <StyledImg src="https://i.imgur.com/WPcy3B6.jpg" />
     <Block display="inline-block">
-      <h3>{name}</h3>
-      <h4>{restaurant_name}</h4>
+      <h3>
+        {restaurant_name}
+        <small>
+          <em>{created_at}</em>
+        </small>
+      </h3>
+      <h4>{name}</h4>
     </Block>
   </TripContainer>
 );

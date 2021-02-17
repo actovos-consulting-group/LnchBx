@@ -75,7 +75,7 @@ const Header = ({ toggle, toggleCategoryModal }) => {
           <li onClick={toggleCategoryModal}>Your Categories</li>
           <li
             onClick={() => {
-              handleLogout();
+              handleLogout(userData.id);
             }}
           >
             Logout

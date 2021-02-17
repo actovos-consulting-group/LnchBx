@@ -50,23 +50,20 @@ const App = () => {
   let history = useHistory();
 
   const handleLogin = response => {
-    const token = JSON.stringify(response.code);
-    try {
-      axios.post(`${API.host}/api/sso-verify`, { token }).then(({ data }) => {
-        StorageHelper.set('user', data);
-        setIsLoggedIn(true);
-        setUserData(data);
-        history.push('/dashboard');
-      });
-    } catch (error) {
-      // TODO: need better handling
-      alert(error);
-    }
+    StorageHelper.set('user', response);
+    setIsLoggedIn(true);
+    setUserData(response);
+    history.push('/dashboard');
   };
 
-  const handleLogout = () => {
-    StorageHelper.delete('user');
-    setIsLoggedIn(false);
+  const handleLogout = userID => {
+    axios
+      .post(`${API.host}/api/auth/logout`, userID)
+      .then(data => {
+        StorageHelper.delete('user');
+        setIsLoggedIn(false);
+      })
+      .catch(error => alert(error));
   };
 
   const authData = { isLoggedIn, handleLogin, userData, handleLogout };
