@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class DevSeeder extends Seeder
 {
@@ -57,7 +58,16 @@ class DevSeeder extends Seeder
             ]);
         }
 
-        factory(User::class, 5)->create();
+        factory(User::class, 5)
+            ->create()
+            ->each(function ($user) {
+                $request = Http::get(
+                    'https://100k-faces.glitch.me/random-image-url'
+                );
+                $image = $request->json();
+                $user->image = $image['url'];
+                $user->save();
+            });
     }
 
     public function seedFriends()
