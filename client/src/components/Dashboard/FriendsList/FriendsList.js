@@ -18,19 +18,6 @@ const FriendListHeader = styled.div`
 
 const FriendsList = ({ items = [], header, type, toggle = () => null }) => {
   const listItems = items.map(item => {
-    if (!item.image) {
-      //get an image
-      // assign item.image
-      const getImage = axios
-        .get('https://100k-faces.glitch.me/random-image-url')
-        .then(data => {
-          return data.data.url;
-        })
-        .catch(error => console.log(error));
-
-      item.image = getImage;
-    }
-
     return (
       <FriendsListItem key={item.id} {...item} type={type} toggle={toggle} />
     );
