@@ -66,7 +66,9 @@ const Layout = () => {
   };
 
   const toggleConfirmModal = () => {
+    console.log('here');
     setConfirmModal({ show: !confirmModal, name: '' });
+    getAllRestaurants();
   };
 
   const toggleCategoriesModal = () => {
@@ -121,7 +123,7 @@ const Layout = () => {
   };
 
   const storeSelectedRestaurant = (id, name) => {
-    // take selectect restaurant info
+    // take selected restaurant info
     // TODO: remove categories from tripFriends info
 
     const tripData = {

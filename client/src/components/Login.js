@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Flex } from '@actovos-consulting-group/ui-core';
-import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
+import { Button, Flex, Grid, Input } from '@actovos-consulting-group/ui-core';
+import { Form, Field } from 'react-final-form';
 import styled from 'styled-components';
 import Logo from './Logo/Logo';
+import { API } from '../constants';
 import { AuthContext } from '../App';
-import { GOOGLE } from '../constants';
 
 const Column = styled(Flex)`
   width: 100vw;
@@ -29,18 +30,56 @@ const responseGoogle = response => {
 const Login = () => {
   const { handleLogin } = useContext(AuthContext);
 
+  const onSubmit = values => {
+    axios
+      .post(`${API.host}/api/auth/login`, values)
+      .then(({ data }) => {
+        handleLogin(data.user);
+      })
+      .catch(error => {
+        alert(error);
+      });
+  };
   return (
     <>
       <Flex>
         <Column flexDirection="column">
-          <GoogleLogin
-            clientId={GOOGLE.client_id}
-            buttonText="Login with Google"
-            onSuccess={response => handleLogin(response)}
-            responseType="code"
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-            isSignedIn={false}
+          <Form
+            onSubmit={onSubmit}
+            render={({ handleSubmit, submitting, pristine }) => (
+              <form onSubmit={handleSubmit}>
+                <Grid.Row>
+                  <Grid.Column size={{ _: 12, md: 12, lg: 12 }}>
+                    <Field name="email">
+                      {({ input }) => (
+                        <Input label="Email" required {...input} />
+                      )}
+                    </Field>
+                  </Grid.Column>
+                  <Grid.Column size={{ _: 12, md: 12, lg: 12 }}>
+                    <Field name="password">
+                      {({ input }) => (
+                        <Input
+                          label="Password"
+                          type="password"
+                          required
+                          {...input}
+                        />
+                      )}
+                    </Field>
+                  </Grid.Column>
+                  <Grid.Column size={{ _: 12, md: 12, lg: 12 }}>
+                    <Button
+                      fullWidth
+                      type="submit"
+                      disabled={submitting || pristine}
+                    >
+                      Login
+                    </Button>
+                  </Grid.Column>
+                </Grid.Row>
+              </form>
+            )}
           />
         </Column>
         <RightColumn>

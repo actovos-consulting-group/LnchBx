@@ -4,16 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Carbon\Carbon;
-use Firebase\JWT\JWT;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return response()->json([
+                'user' => Auth::user()
+            ]);
+        } else {
+            return response(['error' => 'incorrect credentials'], 401);
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        return Auth::logout();
+    }
     public function googleSSO(Request $request)
     {
-        // dd($request->url());
+        // http_origin
+        dd($request);
         //take request data and send to google
         // return $request->token;
 

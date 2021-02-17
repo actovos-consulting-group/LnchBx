@@ -17,6 +17,7 @@ class TripsController extends Controller
     {
         $trips = Trip::where('creator_id', $id)
             ->with('users')
+            ->orderBy('created_at', 'ASC')
             ->get();
 
         return $trips;

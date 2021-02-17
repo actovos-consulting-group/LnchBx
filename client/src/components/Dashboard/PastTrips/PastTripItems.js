@@ -15,9 +15,9 @@ const PastTripHeader = styled.div`
 `;
 
 const PastTripItems = ({ pastTrips }) => {
-  const listItems = pastTrips.map(item => {
-    return <PastTripItem key={item.id} info={item} />;
-  });
+  const listItems = pastTrips.map(item => (
+    <PastTripItem key={item.id} info={item} />
+  ));
 
   return (
     <PastTripContainer>
