@@ -7,19 +7,12 @@ chore - usually for test coverage or non-user touching item
 
 Followed by feature/component/content the changes affect in parentheses.
 
-Example:
-feat(NewButton): GH-412 Add a new red button
 -->
-
-## 📃 Summary
-
 <!--
 Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
 -->
 
-## 🎯 JIRA Task
-
-Addresses [GH-#]()
+## 📃 Summary
 
 ## 👀 Steps to QA
 
