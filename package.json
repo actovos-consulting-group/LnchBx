@@ -7,7 +7,8 @@
   "scripts": {
     "bootstrap": "dotenvi -o ./server -s",
     "eslint": "eslint client/src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"docker-compose up\" \"cd server && php artisan serve\" \"cd client && npm run dev\""
   },
   "keywords": [],
   "author": "",
@@ -37,6 +38,9 @@
     ]
   },
   "dependencies": {
-    "aws-sdk": "^2.607.0"
+    "aws-sdk": "^2.607.0",
+    "concurrently": "^5.3.0",
+    "final-form": "^4.20.1",
+    "react-final-form": "^6.5.2"
   }
 }

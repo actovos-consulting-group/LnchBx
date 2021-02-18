@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('auth')->group(function () {
+    Route::post('login', 'LoginController@authenticate');
+    Route::post('logout', 'LoginController@logout');
+});
+
 Route::get('friends/{id}', 'FriendController@getFriends');
 Route::get('me/{id}', 'UserController@getMe');
+Route::get('categories', 'CategoryController@index');
 Route::post('sso-verify', 'LoginController@googleSSO');
 Route::post('trips', 'TripsController@store');
 Route::get('trips/{id}', 'TripsController@index');
