@@ -14,6 +14,10 @@ class Trip extends Model
         'restaurant_id'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime: d/M/y'
+    ];
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');

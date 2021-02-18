@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class DevSeeder extends Seeder
 {
@@ -41,22 +42,16 @@ class DevSeeder extends Seeder
                     'https://lnchbx-demo.s3-us-west-2.amazonaws.com/jaden.jpg'
             ],
             [
-                "name" => 'Mat',
-                "email" => 'mmorris@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/mat.jpg'
-            ],
-            [
                 "name" => 'Brayden',
                 "email" => 'brobbins@ittybam.com',
                 "image" =>
                     'https://lnchbx-demo.s3-us-west-2.amazonaws.com/brayden.jpg'
             ],
             [
-                "name" => 'Tati',
-                "email" => 'tatianna@actovosgroup.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/tati.jpg'
+                "name" => 'Sam',
+                "email" => 'sscheiderich@ittybam.com',
+                'image' =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/Sam.jpeg'
             ]
         ];
 
@@ -68,6 +63,17 @@ class DevSeeder extends Seeder
                 'password' => Hash::make(env('BASE_PW'))
             ]);
         }
+
+        factory(User::class, 5)
+            ->create()
+            ->each(function ($user) {
+                $request = Http::get(
+                    'https://100k-faces.glitch.me/random-image-url'
+                );
+                $image = $request->json();
+                $user->image = $image['url'];
+                $user->save();
+            });
     }
 
     public function seedFriends()
