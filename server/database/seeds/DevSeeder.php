@@ -46,6 +46,12 @@ class DevSeeder extends Seeder
                 "email" => 'brobbins@ittybam.com',
                 "image" =>
                     'https://lnchbx-demo.s3-us-west-2.amazonaws.com/brayden.jpg'
+            ],
+            [
+                "name" => 'Sam',
+                "email" => 'sscheiderich@ittybam.com',
+                'image' =>
+                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/Sam.jpeg'
             ]
         ];
 
