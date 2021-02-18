@@ -66,7 +66,6 @@ const Layout = () => {
   };
 
   const toggleConfirmModal = () => {
-    console.log('here');
     setConfirmModal({ show: !confirmModal, name: '' });
     getAllRestaurants();
   };
