@@ -30,28 +30,9 @@ class DevSeeder extends Seeder
     {
         $devs = [
             [
-                "name" => 'Daniel',
-                "email" => 'dan@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/daniel.jpg'
-            ],
-            [
-                "name" => 'Jaden',
-                "email" => 'jaden@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/jaden.jpg'
-            ],
-            [
-                "name" => 'Brayden',
-                "email" => 'brobbins@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/brayden.jpg'
-            ],
-            [
-                "name" => 'Sam',
-                "email" => 'sscheiderich@ittybam.com',
-                'image' =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/Sam.jpeg'
+                "name" => 'admin@lnchbx.app',
+                "email" => 'admin@lnchbx.app',
+                "image" => ''
             ]
         ];
 
