@@ -2,11 +2,14 @@
 
 APP_ENV="${APP_ENV:-local}"
 
-# echo "🚀 Bootstrap Lnchbx for $APP_ENV"
-# npm run bootstrap $APP_ENV
-
 if ([ "$APP_ENV" != "local" ] || [ -n "$RUNNING_IN_VOYAGE" ]) && [ ! -n "$MIGRATION_RUN" ]; then
   echo "🚀 Build JS for non local environment"
+
+  cat >/app/server/.env <<EOL
+APP_NAME=LnchBx
+APP_KEY=
+EOL
+
   npm run build --prefix client
 fi
 
