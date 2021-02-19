@@ -28,29 +28,22 @@ class DevSeeder extends Seeder
 
     public function seedUsers()
     {
-        // $devs = [
-        //     [
-        //         "name" => 'You',
-        //         "email" => 'your@email.com',
-        //         "image" =>
-        //             ''
-        //     ],
-        //     [
-        //         "name" => 'Your Friend',
-        //         "email" => 'yourFriend@email.com',
-        //         "image" =>
-        //             ''
-        //     ],
-        // ];
+        $devs = [
+            [
+                "name" => 'admin@lnchbx.app',
+                "email" => 'admin@lnchbx.app',
+                "image" => ''
+            ]
+        ];
 
-        // foreach ($devs as $dev) {
-        //     User::create([
-        //         'name' => $dev['name'],
-        //         'email' => $dev['email'],
-        //         'image' => $dev['image'],
-        //         'password' => Hash::make(env('BASE_PW'))
-        //     ]);
-        // }
+        foreach ($devs as $dev) {
+            User::create([
+                'name' => $dev['name'],
+                'email' => $dev['email'],
+                'image' => $dev['image'],
+                'password' => Hash::make(env('BASE_PW'))
+            ]);
+        }
 
         factory(User::class, 5)
             ->create()
