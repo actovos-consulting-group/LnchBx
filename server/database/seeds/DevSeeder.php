@@ -28,41 +28,29 @@ class DevSeeder extends Seeder
 
     public function seedUsers()
     {
-        $devs = [
-            [
-                "name" => 'Daniel',
-                "email" => 'dan@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/daniel.jpg'
-            ],
-            [
-                "name" => 'Jaden',
-                "email" => 'jaden@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/jaden.jpg'
-            ],
-            [
-                "name" => 'Brayden',
-                "email" => 'brobbins@ittybam.com',
-                "image" =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/brayden.jpg'
-            ],
-            [
-                "name" => 'Sam',
-                "email" => 'sscheiderich@ittybam.com',
-                'image' =>
-                    'https://lnchbx-demo.s3-us-west-2.amazonaws.com/Sam.jpeg'
-            ]
-        ];
+        // $devs = [
+        //     [
+        //         "name" => 'You',
+        //         "email" => 'your@email.com',
+        //         "image" =>
+        //             ''
+        //     ],
+        //     [
+        //         "name" => 'Your Friend',
+        //         "email" => 'yourFriend@email.com',
+        //         "image" =>
+        //             ''
+        //     ],
+        // ];
 
-        foreach ($devs as $dev) {
-            User::create([
-                'name' => $dev['name'],
-                'email' => $dev['email'],
-                'image' => $dev['image'],
-                'password' => Hash::make(env('BASE_PW'))
-            ]);
-        }
+        // foreach ($devs as $dev) {
+        //     User::create([
+        //         'name' => $dev['name'],
+        //         'email' => $dev['email'],
+        //         'image' => $dev['image'],
+        //         'password' => Hash::make(env('BASE_PW'))
+        //     ]);
+        // }
 
         factory(User::class, 5)
             ->create()

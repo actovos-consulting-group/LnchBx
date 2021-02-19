@@ -16,41 +16,25 @@
 This project was bootstrapped with <a href="https://github.com/facebook/create-react-app" alt="Create React App">Create React App </a>.
 
 - Clone repo
-- Ensure you have Docker, Node/npm, PHP, and AWS CLI installed
-- in project root run `docker-compose up -d database` to initiate the db (running `docker ps` will show active containers); then run `npm i` to load root dependencies
-- Ensure you have an AWS profile with your ittybam AWS keys
-- run `export AWS_REGION=us-west-2`
-- run `npm run bootstrap development` in the root directory
-- run the command `php artisan key:generate` in the `server` directory - this will generate a key in your `.env` file on line 3
-- in the `server` directory you'll need to run `php artisan migrate` to run migrations
-- from the `server` directory still, run `composer install` and then `php artisan serve` - this will start up the server
-- in a new terminal window cd into `client` and run `npm run start` to open the hot reload view or `npm run build` to build files
+- Ensure you have Docker, Node/npm, and PHP installed
+- run `npm i` to install root dependencies
+- Copy `server/.env.example` to `server/.env`
+- in project root run `npm run dev` to initiate the container and build the database and seed it. Check out `deploy/build_run_app.sh` to see whats happening under the hood
 
-### Daily User
+### Helpful info
 
-- from project root `docker-compose up -d database`
-- from /server: `php artisan serve`
-- from /client: `npm run start`
+- from project root `npm run dev` to start the up
+- `docker-compose exec app php ./server/artisan` will give you a list of all your standard laravel commands
+- `docker-compose exec app php ./server/artisan migrate:fresh` to drop all the tables and re-run all migrations
+- `docker-compose exec app php ./server/artisan db:seed --class=DevSeeder` to reseed the db
 
 ### Database Info
 
-- To seed your dev database run `php artisan db:seed --class=DevSeeder` within `/server`
-
-### Production
-
-Info coming soon
+- The db configs are located in `server/config/database.php` or your can overwrite them in the `server/.env` file. If you change anything in the `.env`, kill the container and restart it.
 
 ### Troubleshooting
 
-- when starting the docker database, make sure you kill other existing docker containers.
 - `docker ps`, then `docker kill {3-4 digits of container ID}`
 - issues with your db? Easiest way to reset is `php artisan migrate:refresh` within the `/server` directory
+- if changes in your `server/.env` dont seem to be taking place. kill the container then run `docker-compose build --no-cache`. Once done, kill it and run `npm run dev`
 - also check out the handy <a href="https://github.com/jlemm45/handler">Handler</a> tools that @Jaden created.
-
-### So, you wanna use Postman
-
-Info coming soon
-
-### Full list of commands
-
-coming soon
