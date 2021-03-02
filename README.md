@@ -37,4 +37,4 @@ This project was bootstrapped with <a href="https://github.com/facebook/create-r
 - `docker ps`, then `docker kill {3-4 digits of container ID}`
 - issues with your db? Easiest way to reset is `php artisan migrate:refresh` within the `/server` directory
 - if changes in your `server/.env` dont seem to be taking place. kill the container then run `docker-compose build --no-cache`. Once done, kill it and run `npm run dev`
-- also check out the handy <a href="https://github.com/jlemm45/handler">Handler</a> tools that @Jaden created.
+- also check out the handy <a href="https://github.com/jlemm45/handler">Handler</a> tools that @jadenlemmon created.
