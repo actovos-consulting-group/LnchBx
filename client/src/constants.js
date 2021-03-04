@@ -15,12 +15,12 @@ const allRestaurantParams = queryString.stringify({
   query: 'restaurant',
 });
 
-const selectedRestaurantParams = {
+const selectedRestaurantParams = queryString.stringify({
   v: '20200501',
   intent: 'browse',
   radius: '10000',
   ll: '35.4746368,-97.51756800000001', // change this for your location or be better and use browser location services :)
-};
+});
 
 export const restaurantQueries = {
   getAllRestaurants: `${FOURSQUARE.url}/search?client_id=${FOURSQUARE.client_id}&client_secret=${FOURSQUARE.client_secret}&${allRestaurantParams}`,
