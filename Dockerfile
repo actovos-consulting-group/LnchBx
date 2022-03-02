@@ -20,5 +20,6 @@ RUN npm i --prefix ./client
 COPY . .
 
 RUN chown -R www-data:www-data server/storage
+RUN chmod -R 777 server/storage
 
 EXPOSE 80
