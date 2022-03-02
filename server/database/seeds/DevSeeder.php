@@ -28,11 +28,14 @@ class DevSeeder extends Seeder
 
     public function seedUsers()
     {
+        $admin = Http::get('https://100k-faces.glitch.me/random-image-url');
+        $imageAdmin = $admin->json();
+
         $devs = [
             [
                 "name" => 'admin@lnchbx.app',
                 "email" => 'admin@lnchbx.app',
-                "image" => ''
+                "image" => $imageAdmin['url']
             ]
         ];
 
