@@ -5,17 +5,15 @@ WORKDIR /app
 COPY deploy/build_run_app.sh /init.d
 RUN chmod +x /init.d/build_run_app.sh
 
-COPY package.json .
-COPY package-lock.json* .
-RUN npm i
+COPY package*.json ./
+RUN npm ci
 
-COPY server/composer.json ./server/
-COPY server/composer.lock* ./server/
-RUN composer install --no-scripts --no-autoloader --working-dir ./server
+COPY server/composer.json ./
+COPY server/composer.lock* ./
+RUN composer install --no-scripts --no-autoloader
 
-COPY client/package.json ./client/
-COPY client/package-lock.json ./client/
-RUN npm i --prefix ./client
+COPY client/package*.json ./client/
+RUN npm ci --prefix ./client
 
 COPY . .
 

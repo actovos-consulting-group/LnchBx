@@ -5,7 +5,7 @@ APP_ENV="${APP_ENV:-local}"
 if ([ "$APP_ENV" != "local" ] || [ -n "$RUNNING_IN_VOYAGE" ]) && [ ! -n "$MIGRATION_RUN" ]; then
   echo "🚀 Build JS for non local environment"
 
-  cat >/app/server/.env <<EOL
+  cat >/app/.env <<EOL
 APP_NAME=LnchBx
 APP_KEY=
 EOL
@@ -21,17 +21,17 @@ if [ "$APP_ENV" == "local" ] || [ -n "$RUNNING_IN_VOYAGE" ]; then
 fi
 
 echo "🚀 Dump Autoloader"
-composer dumpautoload --working-dir ./server
+composer dumpautoload
 
 if [ -n "$RUNNING_IN_VOYAGE" ] || [ -n "$CIRCLECI" ] || [ "$APP_ENV" == "local" ] || [ -n "$MIGRATION_RUN" ]; then
   echo "🚀 Running migrations"
-  php ./server/artisan migrate --force
+  php artisan migrate --force
 fi
 
 echo "🚀 Generate App Key"
-php ./server/artisan key:generate
+php artisan key:generate
 
 if [ -n "$RUNNING_IN_VOYAGE" ] || [ -n "$CIRCLECI" ] || [ "$APP_ENV" == "local" ]; then
   echo "🚀 Seeding"
-  php ./server/artisan db:seed --class=DevSeeder
+  php artisan db:seed --class=DevSeeder
 fi
