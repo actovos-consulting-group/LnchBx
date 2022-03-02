@@ -10,10 +10,9 @@ services:
       DB_PORT: 5432
       DB_HOST: database
       AWS_REGION: us-west-2
-      ROOT_DIR: /app/server/public
     working_dir: /app
     volumes:
-      - ./server:/app/server
+      - ./server:/app
       - $HOME/.aws/credentials:/root/.aws/credentials:ro
     networks:
       - lnchbx

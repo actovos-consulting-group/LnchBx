@@ -15,8 +15,9 @@ RUN composer install --no-scripts --no-autoloader
 COPY client/package*.json ./client/
 RUN npm ci --prefix ./client
 
-COPY . .
+COPY client ./client
+COPY server/ .
 
-RUN chown -R www-data:www-data server/storage
+RUN chown -R www-data:www-data storage
 
 EXPOSE 80
